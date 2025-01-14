@@ -50,7 +50,7 @@ def predict_datapoint():
                                                       pH, sulphates, alcohol]])
         result = random_forest_model.predict(new_data_scaled)
         result_value = result[0]
-        
+        print(result_value)
         # Quality message
         if result_value == 1:
             txt = 'Хороша якість вина'
