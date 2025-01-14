@@ -7,8 +7,8 @@ application = Flask(__name__)
 app = application
 
 # Reading pickles
-random_forest_model = pickle.load(open('models/random_forest_model.pkl', 'rb'))
-standart_scaler = pickle.load(open('models/scaler.pkl', 'rb'))
+random_forest_model = pickle.load(open('Models/random_forest_model.pkl', 'rb'))
+standart_scaler = pickle.load(open('Models/scaler.pkl', 'rb'))
 
 # Wine dataset min, max, and mean values
 wine_data_stats = {
