@@ -6,8 +6,8 @@ import pickle
 application = Flask(__name__) 
 app = application
 
-random_forest_model = pickle.load(open('Models/random_forest_model.pkl', 'rb'))
-standart_scaler = pickle.load(open('Models/scaler.pkl', 'rb'))
+random_forest_model = pickle.load(open('Models/best_wine_quality_model.pkl', 'rb'))
+standart_scaler = pickle.load(open('Models/wine_quality_scaler.pkl', 'rb'))
 
 @app.route("/", methods=['GET', 'POST'])
 def predict_datapoint():
@@ -33,12 +33,8 @@ def predict_datapoint():
         result = random_forest_model.predict(new_data_scaled)
         result_value = result[0]
         print(result_value)
-        if result_value == 1:
-            txt = 'Хороша якість вина'
-        else:
-            txt = 'Погана якість вина'
 
-        return render_template('home.html', result_value=txt, quality=result_value, 
+        return render_template('home.html', quality=result_value, 
                                fixed_acidity=fixed_acidity, volatile_acidity=volatile_acidity, citric_acid=citric_acid, 
                                residual_sugar=residual_sugar, chlorides=chlorides, free_sulfur_dioxide=free_sulfur_dioxide, 
                                total_sulfur_dioxide=total_sulfur_dioxide, density=density, pH=pH, sulphates=sulphates, alcohol=alcohol)
